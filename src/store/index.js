@@ -12,9 +12,9 @@ const reducer = combineReducers({
 // 配置持久化设置
 const persistConfig = {
   key: 'root', // 存储的键名
-  storage // 持久化存储引擎
+  storage,// 持久化存储引擎
   // 可选的配置项，如白名单、黑名单等 选其一就好了
-  // blacklist:['test'], // 只有 test 不会被缓存
+  // blacklist:['user'], // 只有 test 不会被缓存
   // whitelist: ["test"], // 只有 test 会被缓存
 }
 

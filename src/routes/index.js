@@ -1,5 +1,5 @@
 import Login from '../pages/login'
-import Layout from '../pages/layout'
+import Layout from '../pages/home'
 
 const routes =  [
   {
