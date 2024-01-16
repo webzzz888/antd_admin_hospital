@@ -1,9 +1,9 @@
 import request from "../../utils/request";
 
-export function test(){
+export function login(data:any){
   return request({
-    url: '/home',
-    method: 'get',
-    data: {},
+    url: '/user/login',
+    method: 'post',
+    data,
   })
 }

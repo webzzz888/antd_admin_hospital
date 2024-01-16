@@ -6,12 +6,14 @@ const userSlice = createSlice({
     name:'user', // 用来自动生成action中的type
     initialState:{
         isLogin:false,
+        token: '',
     }, // state的初始值
     reducers:{ // 指定state的各种操作，直接在对象中添加方法
         setUser(state, action){
             // 可以通过不同的方法来指定对state的不同操作
             // 两个参数：state 这个state的是一个代理对象，可以直接修改
             state.isLogin = action.payload.isLogin;
+            state.token = action.payload.token
         },
        
     }

@@ -1,0 +1,27 @@
+.Login{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.Login_container{
+  width: 500px;
+  height: 350px;
+  margin: auto;
+  background: #f4f4f4;
+  border-radius: 20px;
+  margin-top: 15%;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+}
+
+.Login_title{
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.Login_btn{
+  width: 100%;
+}
