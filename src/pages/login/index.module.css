@@ -2,6 +2,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  display: flex;
 }
 .Login_container{
   width: 500px;
@@ -9,7 +10,6 @@
   margin: auto;
   background: #f4f4f4;
   border-radius: 20px;
-  margin-top: 15%;
   box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
 }
 

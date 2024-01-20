@@ -1,10 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from './../../store/user'
 import { Button, Checkbox, Form, Input, message } from 'antd'
 import styles from './index.module.css'
 import { login } from './../../api/login/index'
+import { setToken } from '../../utils/util'
 
 type FieldType = {
   userName?: string
@@ -12,6 +13,9 @@ type FieldType = {
   remember?: string
 }
 export default function Login() {
+  // 获取用户信息
+  const userData = useSelector((state:any) => state.user)
+  // 获取路由导航
   const navigate = useNavigate()
   // 通过useDispatch()来获取派发器对象
   const dispatch = useDispatch()
@@ -21,19 +25,23 @@ export default function Login() {
       const result: any = await login(values)
       if (result.code === 200) {
         message.success('登录成功')
+
+        // 存储token
+        setToken(result.data)
         // 保存登录信息
-        dispatch(
-          setUser({
-            isLogin: true,
-            token: result.data,
-          })
-        )
-        navigate('/', {
-          replace: false,
+        if(values.remember){
+          dispatch(
+            setUser({
+               ...values
+            })
+          )
+        }
+        
+        navigate('/dashboard', {
+          replace: true,
         })
       }
     } catch (error: any) {
-      console.log(error,111,666)
       message.error(error.message)
     }
   }
@@ -46,7 +54,7 @@ export default function Login() {
           size="large"
           labelCol={{ span: 4, offset: 2 }}
           wrapperCol={{ span: 16 }}
-          initialValues={{ remember: true }}
+          initialValues={{ ...userData }}
           onFinish={onFinish}
           autoComplete="off"
           requiredMark={'optional'}

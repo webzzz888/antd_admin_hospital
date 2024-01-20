@@ -6,3 +6,9 @@
   width: 64px;
   height: 64px;
 }
+
+.layout_header{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}

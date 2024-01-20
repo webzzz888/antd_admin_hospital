@@ -1,5 +1,6 @@
 import { message } from "antd"
 import axios from "axios"
+import { getToken } from "./util"
 
 console.log(process.env)
 const request = axios.create({
@@ -9,7 +10,13 @@ const request = axios.create({
 })
 
 
-request.interceptors.request.use(config => config)
+request.interceptors.request.use(config => {
+  const token = getToken()
+  if(token){
+    config.headers['Authorization'] = token
+  }
+  return config
+})
 
 request.interceptors.response.use((response:any) => {
   const data = response.data

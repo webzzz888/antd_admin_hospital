@@ -1,20 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Navigate } from 'react-router-dom'
-import { useSelector} from "react-redux";
 import Layout from './Layout';
+import { getToken } from '../../utils/util';
 
 export default function Home() {
-  // useSelector用户加载state中的数据
-  const userData = useSelector((state: {
-    user: {
-      isLogin: Boolean
-    } 
-  }) => state.user)    
+    // 获取token
+    const token = getToken()
 
   return (
     <>
     {
-      userData.isLogin ? <Layout /> : <Navigate to='/login' />
+      token ? <Layout /> : <Navigate to='/login' />
     }
     </>
   )
